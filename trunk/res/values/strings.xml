@@ -2,4 +2,20 @@
 <resources>
     <string name="hello">Hello World, main_activity!</string>
     <string name="app_name">info_leaker</string>
+    
+    <string name="str_conf_descrip">Choose what you want to show in widget</string>
+    <string name="str_conf_cancel">Cancel</string>
+    <string name="str_conf_save">Save</string>
+    <string name="str_conf_sms">Show SMS information</string>
+    <string name="str_conf_contact">Show Contact information</string>
+    <string name="str_conf_confinfo">More Configurations:</string>
+    <string name="str_conf_remsms">Remind new Short Message</string>
+    <string name="str_conf_calllog">Show Call Log</string>
+    <string name="str_conf_showctc">Show contact by:</string>
+	<string name="str_conf_bynam">Name</string>
+	<string name="str_conf_bynum">Telephone number</string>
+
+    <string name="info_inserting_title">Inserting widgets</string>
+    <string name="info_inserting">Instead of \"running\" widgets, you add them to your home screen.  To insert a widget, long-press in an empty area on the default home screen and select \"Widgets\", then find this widget.\n\nAny inserted widgets will update automatically about four times each day, and no battery is used between updates.</string>
+    <string name="info_done">Done</string>
 </resources>
