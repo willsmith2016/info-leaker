@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:text="@string/str_conf_descrip"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <LinearLayout
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/conf_sms" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/str_conf_sms"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+			<!-- 
+            <CheckBox
+                android:id="@+id/conf_contact" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:text="@string/str_conf_contact"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            -->
+            <CheckBox
+                android:id="@+id/conf_calllog" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:text="@string/str_conf_calllog"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:text="@string/str_conf_confinfo"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+        <LinearLayout
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/conf_remsms" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/str_conf_remsms"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </LinearLayout>
+
+        <RadioGroup
+        android:id="@+id/conf_dispconf" 
+            android:layout_width="fill_parent" 
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dip"
+            android:paddingRight="20dip"
+            android:paddingBottom="20dip"
+            android:orientation="vertical">
+  
+	        <TextView
+	            android:layout_width="fill_parent" 
+	            android:layout_height="wrap_content"
+	            android:padding="10dip"
+	            android:text="@string/str_conf_showctc"
+	            android:textAppearance="?android:attr/textAppearanceSmall" />
+	            
+            <RadioButton
+                android:id="@+id/conf_byname" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/str_conf_bynam"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioButton
+                android:id="@+id/conf_bynum" 
+                android:layout_width="fill_parent" 
+                android:layout_height="wrap_content"
+                android:text="@string/str_conf_bynum"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@android:style/ButtonBar">
+
+            <Button
+                android:id="@+id/conf_cancel"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/str_conf_cancel" />
+
+            <Button
+                android:id="@+id/conf_save"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/str_conf_save" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
