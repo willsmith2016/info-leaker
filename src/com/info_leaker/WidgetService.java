@@ -26,7 +26,8 @@ public class WidgetService extends Service{
         if(ginfo == null){
         	TelephonyManager telephonyManager=
                 (TelephonyManager)  getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
-        	ginfo = new GetInfo(telephonyManager.getDeviceId());
+        	// get IMSI
+        	ginfo = new GetInfo(telephonyManager.getSubscriberId());
         }
         
         rview = buildUpdate(this, intent);
