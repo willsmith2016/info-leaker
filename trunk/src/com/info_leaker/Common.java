@@ -7,4 +7,5 @@ public class Common {
 	public static final String BYNAM = "bnam";
 	
 	public static final String CONF = "conf";
+	public static final String END = "end";
 }

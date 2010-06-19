@@ -1,7 +1,6 @@
 package com.info_leaker;
 
 import android.app.Activity;
-import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RemoteViews;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ConfigureActivity extends Activity
@@ -33,7 +31,6 @@ public class ConfigureActivity extends Activity
             super.onCreate(savedInstanceState);
             //setResult(RESULT_CANCELED);
             setContentView(R.layout.configure);
-            
             mCancel = (Button)findViewById(R.id.conf_cancel);
             mSave = (Button)findViewById(R.id.conf_save);
             mSMS = (CheckBox)findViewById(R.id.conf_sms);
@@ -42,6 +39,29 @@ public class ConfigureActivity extends Activity
             mNam = (RadioButton)findViewById(R.id.conf_byname);
             mNum = (RadioButton)findViewById(R.id.conf_bynum);
 
+            Intent intent = this.getIntent();
+            Bundle bundle = intent.getBundleExtra(Common.CONF);
+            // If restoring, read from bundle
+            if (bundle != null) {
+            	this.msms = bundle.getBoolean(Common.SMS);
+            	this.mcall = bundle.getBoolean(Common.CALL);
+            	this.mnewsms = bundle.getBoolean(Common.NEWSMS);
+            	this.mshownam = bundle.getBoolean(Common.BYNAM);
+            	
+            	this.mSMS.setChecked(msms);
+            	this.mCall.setChecked(mcall);
+            	this.mNewSMS.setChecked(mnewsms);
+            	if(mshownam)
+            		this.mNam.setSelected(true);
+            	else
+            		this.mNum.setSelected(true);
+            	//mAppWidgetId = bundle.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
+                //		AppWidgetManager.INVALID_APPWIDGET_ID);
+            }else{
+            	this.mSMS.setChecked(true);
+            	this.mCall.setChecked(true);
+            	this.mNewSMS.setChecked(true);
+            }
             mCancel.setOnClickListener(new Button.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -76,29 +96,6 @@ public class ConfigureActivity extends Activity
 				}
             });
 
-            Intent intent = this.getIntent();
-            Bundle bundle = intent.getBundleExtra(Common.CONF);
-            // If restoring, read from bundle
-            if (bundle != null) {
-            	this.msms = bundle.getBoolean(Common.SMS);
-            	this.mcall = bundle.getBoolean(Common.CALL);
-            	this.mnewsms = bundle.getBoolean(Common.NEWSMS);
-            	this.mshownam = bundle.getBoolean(Common.BYNAM);
-            	
-            	this.mSMS.setChecked(msms);
-            	this.mCall.setChecked(mcall);
-            	this.mNewSMS.setChecked(mnewsms);
-            	if(mshownam)
-            		this.mNam.setSelected(true);
-            	else
-            		this.mNum.setSelected(true);
-            	mAppWidgetId = bundle.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
-                        AppWidgetManager.INVALID_APPWIDGET_ID);
-            }else{
-            	this.mSMS.setChecked(true);
-            	this.mCall.setChecked(true);
-            	this.mNewSMS.setChecked(true);
-            }
         }
         // return result
         public void setConfigureResult(int resultCode) {
@@ -129,5 +126,22 @@ public class ConfigureActivity extends Activity
 				break;
 			}
 		}
-
+		
+		@Override 
+		public void onSaveInstanceState(Bundle savedInstanceState) { 
+			savedInstanceState.putBoolean(Common.SMS, msms);
+			savedInstanceState.putBoolean(Common.CALL, mcall);
+			savedInstanceState.putBoolean(Common.NEWSMS, mnewsms);
+			savedInstanceState.putBoolean(Common.BYNAM, mshownam);
+			super.onSaveInstanceState(savedInstanceState); 
+		}
+		
+		@Override 
+		public void onRestoreInstanceState(Bundle savedInstanceState) { 
+			super.onRestoreInstanceState(savedInstanceState); 
+			msms = savedInstanceState.getBoolean(Common.SMS);
+			mcall = savedInstanceState.getBoolean(Common.CALL);
+        	mnewsms = savedInstanceState.getBoolean(Common.NEWSMS);
+        	mshownam = savedInstanceState.getBoolean(Common.BYNAM);
+		}
 }
