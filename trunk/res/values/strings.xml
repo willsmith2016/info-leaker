@@ -16,6 +16,7 @@
 	<string name="str_conf_bynum">Telephone number</string>
 
     <string name="info_inserting_title">Inserting widgets</string>
-    <string name="info_inserting">Instead of \"running\" widgets, you add them to your home screen.  To insert a widget, long-press in an empty area on the default home screen and select \"Widgets\", then find this widget.\n\nAny inserted widgets will update automatically about four times each day, and no battery is used between updates.</string>
+    <string name="info_inserting">Instead of \"running\" widgets, you add them to your home screen.  To insert a widget, long-press in an empty area on the default home screen and select \"Widgets\", then find this widget.\n\nThis widget will update automatically to display latest information about you contacts and short messages.</string>
     <string name="info_done">Done</string>
+<string name="widget_load">Loading...</string>
 </resources>

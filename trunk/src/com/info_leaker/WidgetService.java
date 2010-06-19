@@ -77,10 +77,12 @@ public class WidgetService extends Service{
         // Get the layout for the App Widget and attach an on-click listener to the button
         RemoteViews views = new RemoteViews(c.getPackageName(), R.layout.widget);
 
-        //views.setImageViewResource(R.id.wd_icon, R.drawable.contact2);
+        
         views.setViewVisibility(R.id.wd_bg, View.VISIBLE);
         views.setTextViewText(R.id.wd_sms, "sms");
         views.setTextViewText(R.id.wd_call, "call");
+        
+        views.setImageViewResource(R.id.wd_icon, R.drawable.contact2);
         return views;
 	}
 }

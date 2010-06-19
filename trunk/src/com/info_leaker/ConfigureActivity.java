@@ -20,9 +20,9 @@ public class ConfigureActivity extends Activity
         private CheckBox mSMS, mCall, mNewSMS;
         private RadioButton mNam, mNum;
 
-        private boolean msms;		// show sms
-        private boolean mcall;		// show call log
-        private boolean mnewsms;	// show new sms
+        private boolean msms = true;		// show sms
+        private boolean mcall = true;		// show call log
+        private boolean mnewsms = true;	// show new sms
         private boolean mshownam;	// show contact by name or number
         int mAppWidgetId;
 
