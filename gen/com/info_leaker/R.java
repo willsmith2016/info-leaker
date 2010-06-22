@@ -24,15 +24,17 @@ public final class R {
         public static final int conf_bynum=0x7f070005;
         public static final int conf_calllog=0x7f070001;
         public static final int conf_cancel=0x7f070006;
+        public static final int conf_contact=0x7f070000;
         public static final int conf_dispconf=0x7f070003;
-        public static final int conf_remsms=0x7f070002;
+        public static final int conf_remcall=0x7f070002;
         public static final int conf_save=0x7f070007;
-        public static final int conf_sms=0x7f070000;
         public static final int info_done=0x7f070008;
         public static final int wd_bg=0x7f07000a;
         public static final int wd_call=0x7f07000c;
-        public static final int wd_icon=0x7f07000d;
-        public static final int wd_sms=0x7f07000b;
+        public static final int wd_contact=0x7f07000d;
+        public static final int wd_icon=0x7f07000f;
+        public static final int wd_new=0x7f07000e;
+        public static final int wd_title=0x7f07000b;
         public static final int widget=0x7f070009;
     }
     public static final class layout {
@@ -54,11 +56,15 @@ public final class R {
         public static final int str_conf_confinfo=0x7f050007;
         public static final int str_conf_contact=0x7f050006;
         public static final int str_conf_descrip=0x7f050002;
-        public static final int str_conf_remsms=0x7f050008;
+        public static final int str_conf_remcall=0x7f050008;
         public static final int str_conf_save=0x7f050004;
         public static final int str_conf_showctc=0x7f05000a;
         public static final int str_conf_sms=0x7f050005;
-        public static final int widget_load=0x7f050010;
+        public static final int widget_call=0x7f050012;
+        public static final int widget_contact=0x7f050013;
+        public static final int widget_load=0x7f050011;
+        public static final int widget_new=0x7f050014;
+        public static final int widget_title=0x7f050010;
     }
     public static final class style {
         public static final int WidgetBackground=0x7f060000;

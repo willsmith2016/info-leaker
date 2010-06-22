@@ -7,10 +7,10 @@
     <string name="str_conf_cancel">Cancel</string>
     <string name="str_conf_save">Save</string>
     <string name="str_conf_sms">Show SMS information</string>
-    <string name="str_conf_contact">Show Contact information</string>
+    <string name="str_conf_contact">Show Contacts information</string>
     <string name="str_conf_confinfo">More Configurations:</string>
-    <string name="str_conf_remsms">Remind new Short Message</string>
-    <string name="str_conf_calllog">Show Call Log</string>
+    <string name="str_conf_remcall">Remind Recent Call Log</string>
+    <string name="str_conf_calllog">Show Call Log information</string>
     <string name="str_conf_showctc">Show contact by:</string>
 	<string name="str_conf_bynam">Name</string>
 	<string name="str_conf_bynum">Telephone number</string>
@@ -18,5 +18,11 @@
     <string name="info_inserting_title">Inserting widgets</string>
     <string name="info_inserting">Instead of \"running\" widgets, you add them to your home screen.  To insert a widget, long-press in an empty area on the default home screen and select \"Widgets\", then find this widget.\n\nThis widget will update automatically to display latest information about you contacts and short messages.</string>
     <string name="info_done">Done</string>
-<string name="widget_load">Loading...</string>
+    
+    <string name="widget_title">Info-Reminder</string>
+	<string name="widget_load">Loading...</string>
+	
+	<string name="widget_call">CallLogs - </string>
+	<string name="widget_contact">Contacts - </string>
+	<string name="widget_new">New Call - </string>
 </resources>
