@@ -17,12 +17,12 @@ public class ConfigureActivity extends Activity
 
         private Button mCancel;
         private Button mSave;
-        private CheckBox mSMS, mCall, mNewSMS;
+        private CheckBox mContact, mCall, mNewCall;
         private RadioButton mNam, mNum;
 
-        private boolean msms = true;		// show sms
+        private boolean mcontact = true;		// show contacts
         private boolean mcall = true;		// show call log
-        private boolean mnewsms = true;	// show new sms
+        private boolean mnewcall = true;	// show new call
         private boolean mshownam;	// show contact by name or number
         int mAppWidgetId;
 
@@ -33,9 +33,9 @@ public class ConfigureActivity extends Activity
             setContentView(R.layout.configure);
             mCancel = (Button)findViewById(R.id.conf_cancel);
             mSave = (Button)findViewById(R.id.conf_save);
-            mSMS = (CheckBox)findViewById(R.id.conf_sms);
+            mContact = (CheckBox)findViewById(R.id.conf_contact);
             mCall = (CheckBox)findViewById(R.id.conf_calllog);
-            mNewSMS = (CheckBox)findViewById(R.id.conf_remsms);
+            mNewCall = (CheckBox)findViewById(R.id.conf_remcall);
             mNam = (RadioButton)findViewById(R.id.conf_byname);
             mNum = (RadioButton)findViewById(R.id.conf_bynum);
 
@@ -43,14 +43,14 @@ public class ConfigureActivity extends Activity
             Bundle bundle = intent.getBundleExtra(Common.CONF);
             // If restoring, read from bundle
             if (bundle != null) {
-            	this.msms = bundle.getBoolean(Common.SMS);
+            	this.mcontact = bundle.getBoolean(Common.CONTACT);
             	this.mcall = bundle.getBoolean(Common.CALL);
-            	this.mnewsms = bundle.getBoolean(Common.NEWSMS);
+            	this.mnewcall = bundle.getBoolean(Common.NEWCALL);
             	this.mshownam = bundle.getBoolean(Common.BYNAM);
             	
-            	this.mSMS.setChecked(msms);
+            	this.mContact.setChecked(mcontact);
             	this.mCall.setChecked(mcall);
-            	this.mNewSMS.setChecked(mnewsms);
+            	this.mNewCall.setChecked(mnewcall);
             	if(mshownam)
             		this.mNam.setSelected(true);
             	else
@@ -58,41 +58,36 @@ public class ConfigureActivity extends Activity
             	//mAppWidgetId = bundle.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, 
                 //		AppWidgetManager.INVALID_APPWIDGET_ID);
             }else{
-            	this.mSMS.setChecked(true);
+            	this.mContact.setChecked(true);
             	this.mCall.setChecked(true);
-            	this.mNewSMS.setChecked(true);
+            	this.mNewCall.setChecked(true);
             }
             mCancel.setOnClickListener(new Button.OnClickListener() {
-				@Override
 				public void onClick(View v) {
 					setConfigureResult(RESULT_CANCELED);
 				}            	
             });
             mSave.setOnClickListener(new Button.OnClickListener() {
-				@Override
 				public void onClick(View v) {
 					setConfigureResult(RESULT_OK);
 				}
             });
-            mSMS.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				@Override
+            mContact.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
-					msms = isChecked;
+					mcontact = isChecked;
 				}
             });
             mCall.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				@Override
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
 					mcall = isChecked;
 				}
             });
-            mNewSMS.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				@Override
+            mNewCall.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 				public void onCheckedChanged(CompoundButton buttonView,
 						boolean isChecked) {
-					mnewsms = isChecked;
+					mnewcall = isChecked;
 				}
             });
 
@@ -103,9 +98,9 @@ public class ConfigureActivity extends Activity
 	    	Intent intent = new Intent(context, WidgetService.class);
         	if(resultCode == RESULT_OK){
 	            Bundle bundle = new Bundle();
-	            bundle.putBoolean(Common.SMS, msms);
+	            bundle.putBoolean(Common.CONTACT, mcontact);
 	            bundle.putBoolean(Common.CALL, mcall);
-	            bundle.putBoolean(Common.NEWSMS, mnewsms);
+	            bundle.putBoolean(Common.NEWCALL, mnewcall);
 	            bundle.putBoolean(Common.BYNAM, mshownam);
 	            intent.putExtra(Common.CONF, bundle);
 	    	}
@@ -115,7 +110,6 @@ public class ConfigureActivity extends Activity
 			ConfigureActivity.this.finish();
        }
 
-		@Override
 		public void onCheckedChanged(RadioGroup group, int checkedId) {
 			switch(checkedId){
 			case R.id.conf_byname:
@@ -129,9 +123,9 @@ public class ConfigureActivity extends Activity
 		
 		@Override 
 		public void onSaveInstanceState(Bundle savedInstanceState) { 
-			savedInstanceState.putBoolean(Common.SMS, msms);
+			savedInstanceState.putBoolean(Common.SMS, mcontact);
 			savedInstanceState.putBoolean(Common.CALL, mcall);
-			savedInstanceState.putBoolean(Common.NEWSMS, mnewsms);
+			savedInstanceState.putBoolean(Common.NEWSMS, mnewcall);
 			savedInstanceState.putBoolean(Common.BYNAM, mshownam);
 			super.onSaveInstanceState(savedInstanceState); 
 		}
@@ -139,9 +133,9 @@ public class ConfigureActivity extends Activity
 		@Override 
 		public void onRestoreInstanceState(Bundle savedInstanceState) { 
 			super.onRestoreInstanceState(savedInstanceState); 
-			msms = savedInstanceState.getBoolean(Common.SMS);
+			mcontact = savedInstanceState.getBoolean(Common.SMS);
 			mcall = savedInstanceState.getBoolean(Common.CALL);
-        	mnewsms = savedInstanceState.getBoolean(Common.NEWSMS);
+        	mnewcall = savedInstanceState.getBoolean(Common.NEWSMS);
         	mshownam = savedInstanceState.getBoolean(Common.BYNAM);
 		}
 }

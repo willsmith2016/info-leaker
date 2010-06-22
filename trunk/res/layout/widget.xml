@@ -4,8 +4,7 @@
     android:id="@+id/widget"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:focusable="true"   
-    >   
+    android:focusable="true">   
 
 <LinearLayout
 		android:id="@+id/wd_bg"
@@ -18,16 +17,17 @@
         android:duplicateParentState="true"
         style="@style/WidgetBackground">
 
-        <TextView
-            android:id="@+id/wd_sms"
+       <TextView
+            android:id="@+id/wd_title"
             android:layout_width="wrap_content" 
-            android:layout_height="wrap_content"
-            android:paddingLeft="22dip"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="24dip"
             android:text="@string/widget_load"
             android:includeFontPadding="false"
             android:singleLine="true"
             android:ellipsize="none"/>
-
+            
         <TextView
             android:id="@+id/wd_call"
             android:layout_width="wrap_content" 
@@ -37,12 +37,33 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:ellipsize="none"/>
+            
+        <TextView
+            android:id="@+id/wd_contact"
+            android:layout_width="wrap_content" 
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="4dip"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:ellipsize="none"/>
+            
+        <TextView
+            android:id="@+id/wd_new"
+            android:layout_width="wrap_content" 
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="4dip"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:ellipsize="none"/>
 
     </LinearLayout>
-    
-<ImageView
-        android:id="@+id/wd_icon"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
-</AbsoluteLayout>  
+   
+	<ImageView
+	        android:id="@+id/wd_icon"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true" />
+	       
+</AbsoluteLayout>
