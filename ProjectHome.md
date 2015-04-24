@@ -1,0 +1,1 @@
+an android programme to get info such as contact and message
